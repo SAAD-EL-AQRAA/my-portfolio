@@ -1,0 +1,413 @@
+<!DOCTYPE html>
+<html lang="fr">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SAAD EL-AQRAA — Développeur Full-Stack Junior</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <script type="module" crossorigin src="/assets/index-tYWbuhdG.js"></script>
+    <link rel="stylesheet" crossorigin href="/assets/index-CxVQkFvC.css">
+  </head>
+  <body>
+    <!-- Preloader -->
+    <div id="loader" class="loader-container">
+      <div class="loader-bar-bg">
+        <div id="loader-bar" class="loader-bar"></div>
+      </div>
+      <span id="loader-text" class="loader-text">Chargement 0%</span>
+    </div>
+
+    <!-- Live Canvas Background for 240-frame scroll animation -->
+    <canvas id="scroll-canvas"></canvas>
+
+    <!-- Overlay Portfolio Content -->
+    <div class="content-wrapper">
+      
+      <!-- Site Header -->
+      <header class="site-header">
+        <div class="header-container">
+          <a href="#" class="logo">Saad<span class="logo-accent"> Portfolio</span></a>
+          <nav class="main-nav">
+            <a href="#hero" class="nav-link active">Home</a>
+            <a href="#about" class="nav-link">About</a>
+            <a href="#skills" class="nav-link">Skills</a>
+            <a href="#projects" class="nav-link">Projects</a>
+            <a href="#contact" class="nav-link">Contact</a>
+          </nav>
+          <button class="menu-btn" aria-label="Toggle Menu">
+            <span></span>
+            <span></span>
+          </button>
+        </div>
+      </header>
+
+      <!-- Section Hero -->
+      <section id="hero" class="hero-section">
+        <div class="hero-content">
+          <span class="hero-subtitle">Développeur Full-Stack Junior — Laravel + React</span>
+          <h1 class="hero-title">SAAD<br>EL-AQRAA</h1>
+          <p class="hero-desc">
+            Développeur Full-Stack Junior spécialisé en Laravel et React, passionné par la conception d'applications web modernes et performantes. Solide expérience pratique dans le développement d'API REST, la conception de bases de données et la réalisation d'applications Full-Stack.
+          </p>
+
+          <div class="hero-actions">
+            <a href="#projects" class="btn-primary">
+              Voir mes projets <span class="btn-arrow">→</span>
+            </a>
+          </div>
+
+          <!-- Contact Info Pills -->
+          <div class="social-pills-grid">
+            <a href="mailto:saadelaqraa2005@gmail.com" class="social-pill">✉️ saadelaqraa2005@gmail.com</a>
+            <a href="tel:0645907988" class="social-pill">📞 0645907988</a>
+            <span class="social-pill">📍 Fès, Maroc</span>
+            <a href="https://github.com/SAAD-EL-AQRAA" target="_blank" rel="noopener" class="social-pill">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.31 3.435 9.795 8.205 11.385.6.105.825-.255.825-.57 0-.285-.015-1.23-.015-2.235-3.015.555-3.795-.735-4.035-1.41-.135-.345-.72-1.41-1.23-1.695-.42-.225-1.02-.78-.015-.795.945-.015 1.62.87 1.845 1.23 1.08 1.815 2.805 1.305 3.495.99.105-.78.42-1.305.765-1.605-2.67-.3-5.46-1.335-5.46-5.925 0-1.305.465-2.385 1.23-3.225-.12-.3-.54-1.53.12-3.18 0 0 1.005-.315 3.3 1.23.96-.27 1.98-.405 3-.405s2.04.135 3 .405c2.295-1.56 3.3-1.23 3.3-1.23.66 1.65.24 2.88.12 3.18.765.84 1.23 1.905 1.23 3.225 0 4.605-2.805 5.625-5.475 5.925.435.375.81 1.095.81 2.22 0 1.605-.015 2.895-.015 3.3 0 .315.225.69.825.57A12.02 12.02 0 0024 12c0-6.63-5.37-12-12-12z"/></svg>
+              github.com/SAAD-EL-AQRAA
+            </a>
+            <a href="https://linkedin.com/in/saad-elaqraa" target="_blank" rel="noopener" class="social-pill">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z"/></svg>
+              linkedin.com/in/saad-elaqraa
+            </a>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: About Me -->
+      <section id="about" class="about-section">
+        <h2 class="section-title">About <span class="highlight-purple">Me</span></h2>
+
+        <div class="about-grid-layout">
+          <!-- Left Column -->
+          <div class="about-left-col">
+            <h3 class="about-subtitle">Passionate Web Developer</h3>
+            <p class="about-text-content">
+              En tant que développeur web passionné spécialisé en <strong>Laravel</strong> et <strong>React</strong>, je me concentre sur la création d'applications web modernes, réactives et interactives. J'aime transformer des idées créatives en véritables expériences numériques performantes, sécurisées et orientées utilisateur.
+            </p>
+            <div class="about-buttons-row">
+              <a href="#contact" class="btn-violet">Get In Touch</a>
+              <a href="mailto:saadelaqraa2005@gmail.com" class="btn-outline">Download CV</a>
+            </div>
+          </div>
+
+          <!-- Right Column: Service Cards Grid -->
+          <div class="services-cards-stack">
+            <div class="service-card">
+              <div class="service-icon">&lt;/&gt;</div>
+              <div class="service-info">
+                <h4 class="card-service-title">Web Development</h4>
+                <p class="card-service-desc">Creating responsive websites and web applications with modern frameworks (Laravel, React, Next.js).</p>
+              </div>
+            </div>
+
+            <div class="service-card">
+              <div class="service-icon">👤</div>
+              <div class="service-info">
+                <h4 class="card-service-title">UI/UX Design</h4>
+                <p class="card-service-desc">Designing intuitive user interfaces and seamless user experiences with Tailwind CSS & Shadcn/ui.</p>
+              </div>
+            </div>
+
+            <div class="service-card">
+              <div class="service-icon">📊</div>
+              <div class="service-info">
+                <h4 class="card-service-title">Project Management</h4>
+                <p class="card-service-desc">Leading projects from conception to completion with agile methodologies, MVC architecture & REST APIs.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: My Skills -->
+      <section id="skills" class="skills-section">
+        <h2 class="section-title">My <span class="highlight-purple">Skills</span></h2>
+
+        <!-- Skill Filter Tabs -->
+        <div class="skills-filter-tabs">
+          <button class="tab-btn active" data-filter="all">All</button>
+          <button class="tab-btn" data-filter="frontend">Frontend</button>
+          <button class="tab-btn" data-filter="backend">Backend</button>
+          <button class="tab-btn" data-filter="tools">Tools</button>
+        </div>
+
+        <!-- Skill Progress Bars Grid -->
+        <div class="skills-progress-grid">
+          <!-- HTML/CSS -->
+          <div class="skill-bar-card" data-category="frontend">
+            <div class="skill-bar-header">
+              <span class="skill-name">HTML/CSS</span>
+              <span class="skill-percentage">90%</span>
+            </div>
+            <div class="skill-progress-bg">
+              <div class="skill-progress-fill" style="width: 90%;"></div>
+            </div>
+          </div>
+
+          <!-- JavaScript -->
+          <div class="skill-bar-card" data-category="frontend">
+            <div class="skill-bar-header">
+              <span class="skill-name">JavaScript</span>
+              <span class="skill-percentage">85%</span>
+            </div>
+            <div class="skill-progress-bg">
+              <div class="skill-progress-fill" style="width: 85%;"></div>
+            </div>
+          </div>
+
+          <!-- React -->
+          <div class="skill-bar-card" data-category="frontend">
+            <div class="skill-bar-header">
+              <span class="skill-name">React</span>
+              <span class="skill-percentage">75%</span>
+            </div>
+            <div class="skill-progress-bg">
+              <div class="skill-progress-fill" style="width: 75%;"></div>
+            </div>
+          </div>
+
+          <!-- Laravel -->
+          <div class="skill-bar-card" data-category="backend">
+            <div class="skill-bar-header">
+              <span class="skill-name">Laravel</span>
+              <span class="skill-percentage">80%</span>
+            </div>
+            <div class="skill-progress-bg">
+              <div class="skill-progress-fill" style="width: 80%;"></div>
+            </div>
+          </div>
+
+          <!-- Tailwind CSS -->
+          <div class="skill-bar-card" data-category="frontend">
+            <div class="skill-bar-header">
+              <span class="skill-name">Tailwind CSS</span>
+              <span class="skill-percentage">85%</span>
+            </div>
+            <div class="skill-progress-bg">
+              <div class="skill-progress-fill" style="width: 85%;"></div>
+            </div>
+          </div>
+
+          <!-- PHP -->
+          <div class="skill-bar-card" data-category="backend">
+            <div class="skill-bar-header">
+              <span class="skill-name">PHP</span>
+              <span class="skill-percentage">75%</span>
+            </div>
+            <div class="skill-progress-bg">
+              <div class="skill-progress-fill" style="width: 75%;"></div>
+            </div>
+          </div>
+
+          <!-- MySQL -->
+          <div class="skill-bar-card" data-category="backend">
+            <div class="skill-bar-header">
+              <span class="skill-name">MySQL</span>
+              <span class="skill-percentage">70%</span>
+            </div>
+            <div class="skill-progress-bg">
+              <div class="skill-progress-fill" style="width: 70%;"></div>
+            </div>
+          </div>
+
+          <!-- MongoDB -->
+          <div class="skill-bar-card" data-category="backend">
+            <div class="skill-bar-header">
+              <span class="skill-name">MongoDB</span>
+              <span class="skill-percentage">65%</span>
+            </div>
+            <div class="skill-progress-bg">
+              <div class="skill-progress-fill" style="width: 65%;"></div>
+            </div>
+          </div>
+
+          <!-- VS Code / Git -->
+          <div class="skill-bar-card" data-category="tools">
+            <div class="skill-bar-header">
+              <span class="skill-name">VS Code / Git</span>
+              <span class="skill-percentage">95%</span>
+            </div>
+            <div class="skill-progress-bg">
+              <div class="skill-progress-fill" style="width: 95%;"></div>
+            </div>
+          </div>
+
+          <!-- Docker / Cloud -->
+          <div class="skill-bar-card" data-category="tools">
+            <div class="skill-bar-header">
+              <span class="skill-name">Docker / Cloud</span>
+              <span class="skill-percentage">75%</span>
+            </div>
+            <div class="skill-progress-bg">
+              <div class="skill-progress-fill" style="width: 75%;"></div>
+            </div>
+          </div>
+
+          <!-- API REST / JSON -->
+          <div class="skill-bar-card" data-category="tools">
+            <div class="skill-bar-header">
+              <span class="skill-name">API REST / JSON</span>
+              <span class="skill-percentage">85%</span>
+            </div>
+            <div class="skill-progress-bg">
+              <div class="skill-progress-fill" style="width: 85%;"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Section: Featured Projects -->
+      <section id="projects" class="projects-section">
+        <h2 class="section-title">Featured <span class="highlight-purple">Projects</span></h2>
+        <p class="section-subtitle-text">
+          Voici mes principaux projets réels. Chaque projet est conçu avec soin, avec une attention particulière à la performance, à la sécurité et à l'expérience utilisateur.
+        </p>
+
+        <div class="featured-projects-grid">
+          <!-- Project 1: GED -->
+          <div class="featured-project-card">
+            <div class="project-card-image">
+              <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=700&auto=format&fit=crop" alt="Application GED" />
+            </div>
+            <div class="project-card-body">
+              <div class="project-card-tags">
+                <span class="p-tag">Laravel</span>
+                <span class="p-tag">React</span>
+                <span class="p-tag">MySQL</span>
+                <span class="p-tag">Tailwind</span>
+              </div>
+              <h3 class="project-card-title">Application GED (Gestion Électronique des Documents)</h3>
+              <p class="project-card-desc">
+                Plateforme complète de gestion documentaire avec archivage, classement, recherche avancée sur documents PDF et gestion des utilisateurs par rôles.
+              </p>
+            </div>
+          </div>
+
+          <!-- Project 2: E-Commerce -->
+          <div class="featured-project-card">
+            <div class="project-card-image">
+              <img src="https://images.unsplash.com/photo-1522337360788-8b13dee7a37e?q=80&w=700&auto=format&fit=crop" alt="E-Commerce Beauté" />
+            </div>
+            <div class="project-card-body">
+              <div class="project-card-tags">
+                <span class="p-tag">Laravel</span>
+                <span class="p-tag">React</span>
+                <span class="p-tag">MySQL</span>
+                <span class="p-tag">Tailwind</span>
+              </div>
+              <h3 class="project-card-title">Site E-Commerce Beauté & Soins Capillaires</h3>
+              <p class="project-card-desc">
+                Boutique en ligne complète pour produits de beauté avec gestion des stocks et commandes côté back-office, système de panier et compte client.
+              </p>
+            </div>
+          </div>
+
+          <!-- Project 3: Crypto App -->
+          <div class="featured-project-card">
+            <div class="project-card-image">
+              <img src="https://images.unsplash.com/photo-1518770660439-4636190af475?q=80&w=700&auto=format&fit=crop" alt="Crypto App" />
+            </div>
+            <div class="project-card-body">
+              <div class="project-card-tags">
+                <span class="p-tag">React</span>
+                <span class="p-tag">Tailwind</span>
+                <span class="p-tag">API Crypto</span>
+              </div>
+              <h3 class="project-card-title">Crypto App</h3>
+              <p class="project-card-desc">
+                Plateforme moderne de suivi des cryptomonnaies en temps réel avec intégration d'API externes pour l'affichage dynamique des cours et statistiques.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="center-btn-box">
+          <a href="https://github.com/SAAD-EL-AQRAA" target="_blank" rel="noopener" class="btn-violet">Check My Github →</a>
+        </div>
+      </section>
+
+      <!-- Section: Get In Touch -->
+      <section id="contact" class="contact-section">
+        <h2 class="section-title">Get In <span class="highlight-purple">Touch</span></h2>
+        <p class="section-subtitle-text">
+          Un projet en tête ou une opportunité de collaboration ? N'hésitez pas à me contacter. Je suis toujours ouvert aux nouvelles opportunités.
+        </p>
+
+        <div class="contact-grid-layout">
+          <!-- Left Column -->
+          <div class="contact-info-col">
+            <h3 class="contact-info-title">Contact Information</h3>
+
+            <div class="contact-info-item">
+              <div class="c-icon">✉️</div>
+              <div class="c-text">
+                <span class="c-label">Email</span>
+                <a href="mailto:saadelaqraa2005@gmail.com" class="c-val">saadelaqraa2005@gmail.com</a>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="c-icon">📞</div>
+              <div class="c-text">
+                <span class="c-label">Phone</span>
+                <a href="tel:0645907988" class="c-val">+212 645907988</a>
+              </div>
+            </div>
+
+            <div class="contact-info-item">
+              <div class="c-icon">📍</div>
+              <div class="c-text">
+                <span class="c-label">Location</span>
+                <span class="c-val">Fès, Morocco</span>
+              </div>
+            </div>
+
+            <div class="connect-with-me">
+              <span class="connect-label">Connect With Me</span>
+              <div class="social-links-row">
+                <a href="https://linkedin.com/in/saad-elaqraa" target="_blank" rel="noopener" class="s-icon-link">Linkedin</a>
+                <a href="https://github.com/SAAD-EL-AQRAA" target="_blank" rel="noopener" class="s-icon-link">GitHub</a>
+              </div>
+            </div>
+          </div>
+
+          <!-- Right Column: Contact Form -->
+          <div class="contact-form-col">
+            <h3 class="form-title">Send a Message</h3>
+
+            <form class="contact-form" onsubmit="event.preventDefault(); alert('Message envoyé avec succès !');">
+              <div class="form-group">
+                <label>Your Name</label>
+                <input type="text" placeholder="saad elaqraa..." required />
+              </div>
+
+              <div class="form-group">
+                <label>Your Email</label>
+                <input type="email" placeholder="saad@gmail.com" required />
+              </div>
+
+              <div class="form-group">
+                <label>Your Message</label>
+                <textarea rows="4" placeholder="Hello, I'd like to talk about..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn-violet form-submit-btn">Send Message ✈</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <!-- Footer -->
+      <footer class="site-footer">
+        <div class="footer-container">
+          <p>© 2026 SAAD EL-AQRAA. All rights reserved.</p>
+        </div>
+      </footer>
+
+    </div>
+
+  </body>
+</html>
