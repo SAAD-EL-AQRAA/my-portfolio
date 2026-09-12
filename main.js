@@ -1,32 +1,42 @@
+/* ====================================================
+   SAAD EL-AQRAA — Portfolio · main.js
+   Canvas scroll animation + portfolio interactions
+   ==================================================== */
+
+// ─────────────────────────────────────────────────────
+// 1. CANVAS FRAME ANIMATION
+// ─────────────────────────────────────────────────────
 const FRAME_COUNT = 240;
-const canvas = document.getElementById('scroll-canvas');
+const canvas = document.getElementById('canvas');
 const ctx = canvas.getContext('2d', { alpha: false });
 
-const loader = document.getElementById('loader');
-const loaderBar = document.getElementById('loader-bar');
-const loaderText = document.getElementById('loader-text');
-
-const images = [];
+const images = new Array(FRAME_COUNT);
 let loadedCount = 0;
-
-let targetFraction = 0;
-let currentFraction = 0;
-let currentFrameIndex = 0;
+let targetProgress = 0;
+let currentProgress = 0;
+let lastRenderedIndex = -1;
 
 function getFrameUrl(index) {
   const frameNumber = String(index + 1).padStart(3, '0');
-  return `/frames/ezgif-frame-${frameNumber}.jpg`;
+  return `/frames/ezgif-frame-${frameNumber}.png`;
 }
 
-function updateCanvasSize() {
+function resizeCanvas() {
   const dpr = Math.min(window.devicePixelRatio || 1, 2);
-  const w = window.innerWidth;
-  const h = window.innerHeight;
+  const displayW = window.innerWidth;
+  const displayH = window.innerHeight;
 
-  canvas.width = Math.floor(w * dpr);
-  canvas.height = Math.floor(h * dpr);
-  canvas.style.width = `${w}px`;
-  canvas.style.height = `${h}px`;
+  canvas.width = Math.round(displayW * dpr);
+  canvas.height = Math.round(displayH * dpr);
+  canvas.style.width = `${displayW}px`;
+  canvas.style.height = `${displayH}px`;
+
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
+
+  const indexToDraw = lastRenderedIndex >= 0 ? lastRenderedIndex : 0;
+  const img = getLoadedImage(indexToDraw);
+  if (img) drawFrame(img);
 }
 
 function drawFrame(img) {
@@ -40,167 +50,250 @@ function drawFrame(img) {
   const imgRatio = iw / ih;
   const canvasRatio = cw / ch;
 
-  let rw, rh, ox, oy;
+  let dw, dh, dx, dy;
 
   if (canvasRatio > imgRatio) {
-    rw = cw;
-    rh = cw / imgRatio;
-    ox = 0;
-    oy = (ch - rh) / 2;
+    dw = cw;
+    dh = cw / imgRatio;
+    dx = 0;
+    dy = (ch - dh) / 2;
   } else {
-    rw = ch * imgRatio;
-    rh = ch;
-    ox = (cw - rw) / 2;
-    oy = 0;
+    dw = ch * imgRatio;
+    dh = ch;
+    dx = (cw - dw) / 2;
+    dy = 0;
   }
 
-  ctx.fillStyle = '#090a0f';
+  ctx.imageSmoothingEnabled = true;
+  ctx.imageSmoothingQuality = 'high';
+  ctx.fillStyle = '#000000';
   ctx.fillRect(0, 0, cw, ch);
-  ctx.drawImage(img, ox, oy, rw, rh);
+  ctx.drawImage(img, Math.round(dx), Math.round(dy), Math.round(dw), Math.round(dh));
 }
 
-function getNearestLoadedImage(targetIndex) {
-  if (images[targetIndex] && images[targetIndex].complete) {
+function getLoadedImage(targetIndex) {
+  if (images[targetIndex] && images[targetIndex].complete && images[targetIndex].naturalWidth > 0) {
     return images[targetIndex];
   }
-
   for (let offset = 1; offset < FRAME_COUNT; offset++) {
     const prev = targetIndex - offset;
-    if (prev >= 0 && images[prev] && images[prev].complete) {
-      return images[prev];
-    }
+    if (prev >= 0 && images[prev] && images[prev].complete && images[prev].naturalWidth > 0) return images[prev];
     const next = targetIndex + offset;
-    if (next < FRAME_COUNT && images[next] && images[next].complete) {
-      return images[next];
-    }
+    if (next < FRAME_COUNT && images[next] && images[next].complete && images[next].naturalWidth > 0) return images[next];
   }
   return null;
 }
 
-function hideLoader() {
-  if (loader && !loader.classList.contains('loaded')) {
-    loader.classList.add('loaded');
-  }
-}
-
-function preloadImages() {
-  setTimeout(hideLoader, 1500);
-
+function preloadFrames() {
   for (let i = 0; i < FRAME_COUNT; i++) {
     const img = new Image();
     img.src = getFrameUrl(i);
 
-    img.onload = () => {
+    const onComplete = () => {
+      images[i] = img;
       loadedCount++;
-      const progress = Math.round((loadedCount / FRAME_COUNT) * 100);
-
-      if (loaderBar) loaderBar.style.width = `${progress}%`;
-      if (loaderText) loaderText.textContent = `Loading ${progress}%`;
-
-      if (i === 0) {
+      if (i === 0 && lastRenderedIndex === -1) {
         drawFrame(img);
-      }
-
-      if (loadedCount === FRAME_COUNT) {
-        hideLoader();
+        lastRenderedIndex = 0;
       }
     };
 
-    img.onerror = () => {
-      loadedCount++;
-      if (loadedCount === FRAME_COUNT) {
-        hideLoader();
-      }
-    };
-
-    images.push(img);
+    if ('decode' in img) {
+      img.decode().then(onComplete).catch(() => { img.onload = onComplete; });
+    } else {
+      img.onload = onComplete;
+    }
   }
 }
 
-function getScrollFraction() {
-  const scrollTop = window.scrollY || window.pageYOffset || document.documentElement.scrollTop || document.body.scrollTop || 0;
-  const docHeight = Math.max(
-    document.documentElement.scrollHeight,
-    document.body.scrollHeight,
-    window.innerHeight
-  );
-  const maxScroll = docHeight - window.innerHeight;
-  return maxScroll > 0 ? Math.min(1, Math.max(0, scrollTop / maxScroll)) : 0;
+// Canvas progress maps to the full page scroll so animation plays everywhere
+function getScrollProgress() {
+  const scrollTop = window.scrollY || document.documentElement.scrollTop || 0;
+  const maxScroll = Math.max(1, document.documentElement.scrollHeight - window.innerHeight);
+  return Math.min(1, Math.max(0, scrollTop / maxScroll));
 }
 
 function renderLoop() {
-  targetFraction = getScrollFraction();
+  targetProgress = getScrollProgress();
+  currentProgress += (targetProgress - currentProgress) * 0.08;
+  if (Math.abs(targetProgress - currentProgress) < 0.0001) currentProgress = targetProgress;
 
-  currentFraction += (targetFraction - currentFraction) * 0.1;
+  const rawIndex = currentProgress * (FRAME_COUNT - 1);
+  const frameIndex = Math.min(FRAME_COUNT - 1, Math.max(0, Math.round(rawIndex)));
 
-  if (Math.abs(targetFraction - currentFraction) < 0.0001) {
-    currentFraction = targetFraction;
-  }
-
-  const rawIndex = currentFraction * (FRAME_COUNT - 1);
-  const targetIndex = Math.min(FRAME_COUNT - 1, Math.max(0, Math.round(rawIndex)));
-
-  currentFrameIndex = targetIndex;
-  const imgToDraw = getNearestLoadedImage(currentFrameIndex);
-  if (imgToDraw) {
-    drawFrame(imgToDraw);
+  if (frameIndex !== lastRenderedIndex) {
+    const img = getLoadedImage(frameIndex);
+    if (img) {
+      drawFrame(img);
+      lastRenderedIndex = frameIndex;
+    }
   }
 
   requestAnimationFrame(renderLoop);
 }
 
-function initSkillsFilter() {
-  const filterBtns = document.querySelectorAll('.skills-filter-tabs .tab-btn');
-  const skillCards = document.querySelectorAll('.skills-progress-grid .skill-bar-card');
+// ─────────────────────────────────────────────────────
+// 2. NAVBAR — scroll effect + active link + mobile menu
+// ─────────────────────────────────────────────────────
+const navbar = document.getElementById('navbar');
+const navLinks = document.querySelectorAll('.nav-link');
+const navLinksContainer = document.getElementById('navLinks');
+const navToggle = document.getElementById('navToggle');
 
-  if (!filterBtns.length || !skillCards.length) return;
+function updateNavbar() {
+  if (window.scrollY > 60) {
+    navbar.classList.add('scrolled');
+  } else {
+    navbar.classList.remove('scrolled');
+  }
+}
 
-  filterBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      filterBtns.forEach(b => b.classList.remove('active'));
-      btn.classList.add('active');
+function updateActiveNav() {
+  const sections = document.querySelectorAll('section[id]');
+  const scrollY = window.scrollY + 120;
 
-      const filter = btn.getAttribute('data-filter');
+  sections.forEach(section => {
+    const top = section.offsetTop;
+    const height = section.offsetHeight;
+    const id = section.getAttribute('id');
 
-      skillCards.forEach(card => {
-        const cat = card.getAttribute('data-category');
-        if (filter === 'all' || cat === filter) {
-          card.style.display = 'block';
-          setTimeout(() => {
-            card.style.opacity = '1';
-            card.style.transform = 'scale(1)';
-          }, 10);
-        } else {
-          card.style.opacity = '0';
-          card.style.transform = 'scale(0.95)';
-          setTimeout(() => {
-            if (card.style.opacity === '0') {
-              card.style.display = 'none';
-            }
-          }, 200);
+    if (scrollY >= top && scrollY < top + height) {
+      navLinks.forEach(link => {
+        link.classList.remove('active');
+        if (link.getAttribute('href') === `#${id}`) {
+          link.classList.add('active');
         }
       });
-    });
+    }
   });
 }
 
-window.addEventListener('resize', () => {
-  updateCanvasSize();
-  const imgToDraw = getNearestLoadedImage(currentFrameIndex);
-  if (imgToDraw) {
-    drawFrame(imgToDraw);
-  }
+// Mobile menu toggle
+navToggle.addEventListener('click', () => {
+  navToggle.classList.toggle('active');
+  navLinksContainer.classList.toggle('open');
 });
 
+// Close mobile menu on link click
+navLinksContainer.querySelectorAll('.nav-link').forEach(link => {
+  link.addEventListener('click', () => {
+    navToggle.classList.remove('active');
+    navLinksContainer.classList.remove('open');
+  });
+});
+
+// ─────────────────────────────────────────────────────
+// 3. INTERSECTION OBSERVER — fade-in sections
+// ─────────────────────────────────────────────────────
+const fadeEls = document.querySelectorAll('.fade-in');
+
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach((entry, i) => {
+    if (entry.isIntersecting) {
+      // Stagger delay based on sibling index
+      const siblings = entry.target.parentElement.querySelectorAll('.fade-in');
+      let delay = 0;
+      siblings.forEach((sib, idx) => {
+        if (sib === entry.target) delay = idx * 100;
+      });
+      setTimeout(() => {
+        entry.target.classList.add('visible');
+      }, delay);
+      observer.unobserve(entry.target);
+    }
+  });
+}, {
+  threshold: 0.12,
+  rootMargin: '0px 0px -60px 0px'
+});
+
+fadeEls.forEach(el => observer.observe(el));
+
+// ─────────────────────────────────────────────────────
+// 4. SKILLS — bar animation on scroll
+// ─────────────────────────────────────────────────────
+const skillItems = document.querySelectorAll('.skill-item');
+
+const skillObserver = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      const bar = entry.target.querySelector('.skill-progress');
+      if (bar) {
+        const width = bar.getAttribute('data-width');
+        setTimeout(() => {
+          bar.style.width = `${width}%`;
+        }, 150);
+      }
+      skillObserver.unobserve(entry.target);
+    }
+  });
+}, { threshold: 0.3 });
+
+skillItems.forEach(item => skillObserver.observe(item));
+
+// ─────────────────────────────────────────────────────
+// 5. SKILLS FILTER
+// ─────────────────────────────────────────────────────
+const filterBtns = document.querySelectorAll('.filter-btn');
+
+filterBtns.forEach(btn => {
+  btn.addEventListener('click', () => {
+    filterBtns.forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    const filter = btn.getAttribute('data-filter');
+
+    skillItems.forEach(item => {
+      const category = item.getAttribute('data-category');
+      if (filter === 'all' || category === filter) {
+        item.style.display = '';
+        item.classList.remove('hidden');
+      } else {
+        item.classList.add('hidden');
+        item.style.display = 'none';
+      }
+    });
+  });
+});
+
+// ─────────────────────────────────────────────────────
+// 6. CONTACT FORM
+// ─────────────────────────────────────────────────────
+const contactForm = document.getElementById('contactForm');
+if (contactForm) {
+  contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const btn = contactForm.querySelector('button[type="submit"]');
+    const originalHTML = btn.innerHTML;
+
+    btn.innerHTML = '<i class="fas fa-check"></i> Message envoyé !';
+    btn.style.background = '#22c55e';
+    btn.disabled = true;
+
+    setTimeout(() => {
+      btn.innerHTML = originalHTML;
+      btn.style.background = '';
+      btn.disabled = false;
+      contactForm.reset();
+    }, 3000);
+  });
+}
+
+// ─────────────────────────────────────────────────────
+// 7. SCROLL EVENTS
+// ─────────────────────────────────────────────────────
 window.addEventListener('scroll', () => {
-  targetFraction = getScrollFraction();
+  targetProgress = getScrollProgress();
+  updateNavbar();
+  updateActiveNav();
 }, { passive: true });
 
-document.addEventListener('DOMContentLoaded', () => {
-  initSkillsFilter();
-});
+window.addEventListener('resize', resizeCanvas, { passive: true });
 
-updateCanvasSize();
-preloadImages();
-initSkillsFilter();
+// ─────────────────────────────────────────────────────
+// 8. INIT
+// ─────────────────────────────────────────────────────
+resizeCanvas();
+preloadFrames();
 requestAnimationFrame(renderLoop);
+updateNavbar();
