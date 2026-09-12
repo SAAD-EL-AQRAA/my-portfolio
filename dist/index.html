@@ -1,0 +1,466 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SAAD EL-AQRAA | Développeur Full-Stack</title>
+  <meta name="description"
+    content="Portfolio de SAAD EL-AQRAA - Développeur Full-Stack Junior spécialisé en Laravel et React. Conception d'applications web innovantes et performantes." />
+  <meta name="keywords" content="SAAD EL-AQRAA, Développeur, Full-Stack, Laravel, React, Portfolio, Web Developer" />
+  <meta name="author" content="SAAD EL-AQRAA" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap"
+    rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+
+  <script type="module" crossorigin src="/assets/index-CxgfuYcM.js"></script>
+  <link rel="stylesheet" crossorigin href="/assets/index-lYk1Gpg2.css">
+</head>
+
+<body>
+  <!-- Canvas Background Animation -->
+  <canvas id="canvas"></canvas>
+
+  <!-- Navigation -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-container">
+      <a href="#hero" class="nav-logo">
+        <span class="logo-name">SAAD</span>
+        <span class="logo-dot">Portfolio</span>
+      </a>
+      <ul class="nav-links" id="navLinks">
+        <li><a href="#hero" class="nav-link active">Accueil</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#skills" class="nav-link">Skills</a></li>
+        <li><a href="#projects" class="nav-link">Projects</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+      <button class="nav-toggle" id="navToggle" aria-label="Toggle navigation">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="scroll-container" id="scrollContainer">
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero-section" id="hero">
+      <div class="hero-content">
+        <p class="hero-subtitle">
+          <span class="accent">Développeur Full-Stack </span> — Laravel / React
+        </p>
+        <h1 class="hero-title">
+          SAAD<br />EL-AQRAA
+        </h1>
+        <p class="hero-description">
+          Développeur Full-Stack Junior spécialisé en Laravel et React, passionné par la
+          conception d'applications web innovantes et performantes. Solide expérience
+          pratique des méthodologies Agile (SCRUM), je suis capable de travailler sur la
+          réalisation d'applications de Full-Stack.
+        </p>
+        <a href="#projects" class="hero-btn">
+          <span>Voir mes projets</span>
+          <i class="fas fa-arrow-right"></i>
+        </a>
+
+        <div class="hero-contact-links">
+          <a href="mailto:saadelaqraa01@gmail.com" class="contact-chip">
+            <i class="fas fa-envelope"></i> saadelaqraa01@gmail.com
+          </a>
+          <a href="tel:+212649907544" class="contact-chip">
+            <i class="fas fa-phone"></i> 0649907544
+          </a>
+          <span class="contact-chip">
+            <i class="fas fa-map-marker-alt"></i> Fès, Maroc
+          </span>
+        </div>
+
+        <div class="hero-social-links">
+          <a href="https://github.com/dashboard" target="_blank" class="social-chip">
+            <i class="fab fa-github"></i> github.com/SAAD-EL-AQRAA
+          </a>
+          <a href="https://linkedin.com/in/saad-el-aqraa" target="_blank" class="social-chip">
+            <i class="fab fa-linkedin"></i> linkedin.com/in/saad-el-aqraa
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== ABOUT SECTION ===== -->
+    <section class="section about-section" id="about">
+      <div class="section-container">
+        <h2 class="section-title fade-in">About <span class="accent">Me</span></h2>
+
+        <div class="about-grid">
+          <div class="about-text fade-in">
+            <h3 class="about-heading">Passionate Web Developer</h3>
+            <p class="about-description">
+              En tant que développeur web passionné et spécialisé en Laravel et React, je suis dans la
+              création d'applications web modernes. Développement d'interfaces utilisateur, bonne maîtrise
+              des outils de test et de plateformes pour assurer les performances des services. J'ai collaboré
+              avec des clients pour développer des solutions.
+            </p>
+            <div class="about-buttons">
+              <a href="#contact" class="btn btn-primary">
+                <i class="fas fa-paper-plane"></i> Get In Touch
+              </a>
+              <a href="/public/SAAD_EL-AQRAA.pdf" class="btn btn-outline">
+                <i class="fas fa-download"></i> Download CV
+              </a>
+            </div>
+          </div>
+
+          <div class="about-services">
+            <div class="service-card fade-in">
+              <div class="service-icon">
+                <i class="fas fa-check-circle"></i>
+              </div>
+              <div class="service-info">
+                <h4>Web Development</h4>
+                <p>Création d'applications web avec les dernières technologies: Laravel, React, next.js.</p>
+              </div>
+            </div>
+            <div class="service-card fade-in">
+              <div class="service-icon">
+                <i class="fas fa-palette"></i>
+              </div>
+              <div class="service-info">
+                <h4>UI/UX Design</h4>
+                <p>Designing intuitive user interfaces and experiences with Figma et CSS3, Bootstrap et tailwind css et
+                  shadcn ui .</p>
+              </div>
+            </div>
+            <div class="service-card fade-in">
+              <div class="service-icon">
+                <i class="fas fa-project-diagram"></i>
+              </div>
+              <div class="service-info">
+                <h4>Product Management</h4>
+                <p>Gestion de projets agile de la conception à la production with Agile methodologies, JIRA.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== SKILLS SECTION ===== -->
+    <section class="section skills-section" id="skills">
+      <div class="section-container">
+        <h2 class="section-title fade-in">My <span class="accent">Skills</span></h2>
+
+        <div class="skills-filters fade-in">
+          <button class="filter-btn active" data-filter="all">All</button>
+          <button class="filter-btn" data-filter="frontend">Frontend</button>
+          <button class="filter-btn" data-filter="backend">Backend</button>
+          <button class="filter-btn" data-filter="tools">Tools</button>
+        </div>
+
+        <div class="skills-grid">
+          <!-- Row 1 -->
+          <div class="skill-item fade-in" data-category="frontend">
+            <div class="skill-header">
+              <span class="skill-name">HTML/CSS</span>
+              <span class="skill-percent">92%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="92"></div>
+            </div>
+          </div>
+          <div class="skill-item fade-in" data-category="frontend">
+            <div class="skill-header">
+              <span class="skill-name">JavaScript</span>
+              <span class="skill-percent">85%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="85"></div>
+            </div>
+          </div>
+          <div class="skill-item fade-in" data-category="frontend">
+            <div class="skill-header">
+              <span class="skill-name">Tailwind CSS</span>
+              <span class="skill-percent">88%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="88"></div>
+            </div>
+          </div>
+          <div class="skill-item fade-in" data-category="backend">
+            <div class="skill-header">
+              <span class="skill-name">PHP</span>
+              <span class="skill-percent">80%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="80"></div>
+            </div>
+          </div>
+
+          <!-- Row 2 -->
+          <div class="skill-item fade-in" data-category="backend">
+            <div class="skill-header">
+              <span class="skill-name">Laravel</span>
+              <span class="skill-percent">85%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="85"></div>
+            </div>
+          </div>
+          <div class="skill-item fade-in" data-category="frontend">
+            <div class="skill-header">
+              <span class="skill-name">ReactJS</span>
+              <span class="skill-percent">80%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="80"></div>
+            </div>
+          </div>
+          <div class="skill-item fade-in" data-category="backend">
+            <div class="skill-header">
+              <span class="skill-name">MongoDB</span>
+              <span class="skill-percent">65%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="65"></div>
+            </div>
+          </div>
+          <div class="skill-item fade-in" data-category="backend">
+            <div class="skill-header">
+              <span class="skill-name">Python</span>
+              <span class="skill-percent">70%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="70"></div>
+            </div>
+          </div>
+
+          <!-- Row 3 -->
+          <div class="skill-item fade-in" data-category="tools">
+            <div class="skill-header">
+              <span class="skill-name">Docker / Cloud</span>
+              <span class="skill-percent">60%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="60"></div>
+            </div>
+          </div>
+          <div class="skill-item fade-in" data-category="backend">
+            <div class="skill-header">
+              <span class="skill-name">MySQL</span>
+              <span class="skill-percent">82%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="82"></div>
+            </div>
+          </div>
+
+          <div class="skill-item fade-in" data-category="tools">
+            <div class="skill-header">
+              <span class="skill-name">API REST / JSON</span>
+              <span class="skill-percent">85%</span>
+            </div>
+            <div class="skill-bar">
+              <div class="skill-progress" data-width="85"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== PROJECTS SECTION ===== -->
+    <section class="section projects-section" id="projects">
+      <div class="section-container">
+        <h2 class="section-title fade-in">Featured <span class="accent">Projects</span></h2>
+        <p class="section-subtitle fade-in">
+          Voici mes projets récents. Chaque projet est une démonstration de mon attention
+          particulière à la performance, à la sécurité et à l'expérience utilisateur.
+        </p>
+
+        <div class="projects-grid">
+          <div class="project-card fade-in">
+            <div class="project-image">
+              <img src="/ged.png" alt="Application de Gestion Électronique" loading="lazy" />
+              <div class="project-overlay">
+                <div class="project-tags">
+                  <span class="tag">react</span>
+                  <span class="tag">laravel</span>
+                  <span class="tag">mysql</span>
+                  <span class="tag">api rest</span>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3>Application de Gestion Électronique des Documents</h3>
+              <p>Un système de gestion des documents électroniques pour des entreprises avec un système
+                d'authentification avancée.</p>
+            </div>
+          </div>
+
+          <div class="project-card fade-in">
+            <div class="project-image">
+              <img src="/glow.png" alt="Site E-Commerce" loading="lazy" />
+              <div class="project-overlay">
+                <div class="project-tags">
+                  <span class="tag">React</span>
+                  <span class="tag">laravel</span>
+                  <span class="tag">mysql</span>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3>Site E-Commerce Beauté & Mode Marocaine</h3>
+              <p>Une plateforme e-commerce complète pour les produits beauté et mode marocaine avec panier et paiement
+                en ligne.</p>
+            </div>
+          </div>
+
+          <div class="project-card fade-in">
+            <div class="project-image">
+              <img src="/crypto.jpeg" alt="Crypto App" loading="lazy" />
+              <div class="project-overlay">
+                <div class="project-tags">
+                  <span class="tag">React</span>
+                  <span class="tag">API</span>
+                  <span class="tag">Charts</span>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3>Crypto App</h3>
+              <p>Application de suivi de cryptomonnaies en temps réel avec graphiques de prix et gestion de
+                portefeuille.</p>
+            </div>
+          </div>
+        </div>
+        <div class="projects-grid">
+          <div class="project-card fade-in">
+            <div class="project-image">
+              <img src="/assets/dashboard-PBIoxtBt.jpeg" alt="School Management System" loading="lazy" />
+              <div class="project-overlay">
+                <div class="project-tags">
+                  <span class="tag">react</span>
+                  <span class="tag">laravel</span>
+                  <span class="tag">mysql</span>
+                  <span class="tag">api rest</span>
+                </div>
+              </div>
+            </div>
+            <div class="project-info">
+              <h3>Payment System School</h3>
+              <p>A payment system for managing students, teachers, courses, and grades with a modern and
+                user-friendly interface.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="projects-cta fade-in">
+          <a href="https://github.com/dashboard" target="_blank" class="btn btn-primary">
+            <span>View All Projects</span>
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== CONTACT SECTION ===== -->
+    <section class="section contact-section" id="contact">
+      <div class="section-container">
+        <h2 class="section-title fade-in">Get In <span class="accent">Touch</span></h2>
+        <p class="section-subtitle fade-in">
+          Un projet en tête ou un besoin en développement ? N'hésitez pas à me contacter.
+          Je suis toujours ouvert aux nouvelles opportunités et collaborations.
+        </p>
+
+        <div class="contact-grid">
+          <div class="contact-info fade-in">
+            <h3>Contact Information</h3>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-envelope"></i>
+              </div>
+              <div>
+                <span class="contact-label">Email</span>
+                <a href="mailto:saadelaqraa2005@gmail.com">saadelaqraa2005@gmail.com</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-phone"></i>
+              </div>
+              <div>
+                <span class="contact-label">Téléphone</span>
+                <a href="tel:+212649907544">+212 645907988</a>
+              </div>
+            </div>
+
+            <div class="contact-item">
+              <div class="contact-icon">
+                <i class="fas fa-map-marker-alt"></i>
+              </div>
+              <div>
+                <span class="contact-label">Localisation</span>
+                <span>Fès, Maroc</span>
+              </div>
+            </div>
+
+            <div class="contact-social">
+              <span class="contact-label">Connect With Me</span>
+              <div class="social-icons">
+                <a href="https://linkedin.com/in/saad-el-aqraa" target="_blank" aria-label="LinkedIn">
+                  <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://github.com/SAAD-EL-AQRAA" target="_blank" aria-label="GitHub">
+                  <i class="fab fa-github"></i>
+                </a>
+              </div>
+            </div>
+          </div>
+
+          <div class="contact-form-wrapper fade-in">
+            <h3>Send a Message</h3>
+            <form class="contact-form" id="contactForm">
+              <div class="form-group">
+                <label for="name">Your Name</label>
+                <input type="text" id="name" name="name" placeholder="Saad El-Aqraa" required />
+              </div>
+              <div class="form-group">
+                <label for="email">Your Email</label>
+                <input type="email" id="email" name="email" placeholder="saad@gmail.com" required />
+              </div>
+              <div class="form-group">
+                <label for="message">Your Message</label>
+                <textarea id="message" name="message" rows="4" placeholder="Bonjour, je suis intéressé par..."
+                  required></textarea>
+              </div>
+              <button type="submit" class="btn btn-primary btn-full">
+                <span>Send Message</span>
+                <i class="fas fa-paper-plane"></i>
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer">
+      <div class="footer-container">
+        <p>&copy; 2025 SAAD EL-AQRAA. All rights reserved.</p>
+      </div>
+    </footer>
+  </div>
+
+</body>
+
+</html>
